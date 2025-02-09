@@ -14,7 +14,15 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-text color="primary">
+      <h1>LogIn</h1>
+    </ion-text>
+    <ion-card>
+      <ion-card-content>
+        <ion-input [(ngModel)]="name" label="Email" label-placement="floating" fill="outline" placeholder="Enter email" type="email"></ion-input>
+        <ion-input label="Outline input" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+      </ion-card-content>
+      <ion-button (click)="validateData()">Acceder</ion-button>
+    </ion-card>  
   </div>
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { NavController } from '@ionic/angular';
+import { TabsPage } from '../tabs/tabs.page';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -8,6 +9,21 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  name: string = "";
+
+  validateData() {
+    if(this.name == "envrioment"){
+      console.log("here");
+      this.homePageRedirection();
+    }
+    else{
+      console.log("not here");
+    }
+  }
+
+  homePageRedirection(){
+    this.navCtrl.navigateRoot('tabs')
+  }
+  constructor(public navCtrl: NavController) {}
 
 }
