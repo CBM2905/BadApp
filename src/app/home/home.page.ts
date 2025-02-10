@@ -27,7 +27,7 @@ export class HomePage {
   }
 
   homePageRedirection(){
-    this.navCtrl.navigateRoot('tabs')
+    this.navCtrl.navigateRoot('tabs');
   }
   constructor(public navCtrl: NavController, public alrtCtrl: AlertController) {}
   async showAlert(message: string){

@@ -45,13 +45,25 @@
     </ion-segment-content>
     <ion-segment-content id="favorites">
       <ion-button id="open-toast" expand="block">Open</ion-button>
-  <ion-toast trigger="open-toast" message="This toast will disappear after 5 seconds" [duration]="5000" positionAnchor="footer"></ion-toast>
+  <ion-toast trigger="open-toast" message="este es el toast" [duration]="5000" positionAnchor="footer"></ion-toast>
     </ion-segment-content>
   </ion-segment-view>
   <br>
   
-    <ion-datetime id="date"  value="2022-04-21T00:00:00" min="2022-03-01T00:00:00" max="2022-05-31T23:59:59"></ion-datetime>
+    <ion-datetime id="date" [(ngModel)]="date"value="2022-04-21T00:00:00" min="2022-03-01T00:00:00" max="2022-05-31T23:59:59"></ion-datetime>
    <br>
+  <ion-card>
+    <ion-card-header>
+
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text>
+        <h2>
+           La fecha seleccionada es: {{date}}
+        </h2>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
     <ion-list>
     <!-- The reorder gesture is disabled by default, enable it to drag and drop items -->
     <!-- Casting $event to $any is a temporary fix for this bug https://github.com/ionic-team/ionic-framework/issues/24245 -->

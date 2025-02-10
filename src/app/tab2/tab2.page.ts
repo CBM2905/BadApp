@@ -9,6 +9,7 @@ import {ItemReorderEventDetail, OverlayEventDetail} from '@ionic/core/components
 })
 export class Tab2Page implements OnInit {
   name!: string;
+  date: any;
   message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
   @ViewChild(IonModal) modal!: IonModal;
   constructor() { }
