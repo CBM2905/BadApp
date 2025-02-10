@@ -11,19 +11,25 @@
     </ion-toolbar>
   </ion-header>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button>
+    <ion-fab-button id="fab-button-alert" (click)="showAlert()">
       <ion-icon name="chevron-up-circle"></ion-icon>
     </ion-fab-button>
-    <ion-fab-list side="top">
-      <ion-fab-button>
-        <ion-icon name="document"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button>
-        <ion-icon name="color-palette"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button>
-        <ion-icon name="globe"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
   </ion-fab>
+  
+  <ion-searchbar [(ngModel)]="a"
+  (ionInput)="showData2()">
+  </ion-searchbar>
+  <ion-list>
+    @for (item of items; track item; let index = $index) {
+    <ion-item>
+      <ion-avatar slot="start">
+        <img [src]="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
+      </ion-avatar>
+      <ion-label>{{ item }}</ion-label>
+    </ion-item>
+    }
+  </ion-list>
+  <ion-infinite-scroll >
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
