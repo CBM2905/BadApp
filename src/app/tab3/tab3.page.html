@@ -10,7 +10,62 @@
       <ion-title size="large">tab3</ion-title>
     </ion-toolbar>
   </ion-header>
-  <h1>
-    here
-  </h1>
+   <div id="image">
+    <ion-avatar >
+      <img alt="Silhouette of a person's head" [src]="imageSrc" (click)="takePicture()"/>
+    </ion-avatar>
+
+    
+   </div>
+   <ion-list [inset]="true">
+    <ion-item>
+      <ion-input label="First Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Last Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-toggle>
+        <ion-label>Allow Notifications</ion-label>
+        <ion-note color="medium">Unsubscribe at any time</ion-note>
+      </ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-textarea label="Comments" labelPlacement="floating" rows="5"></ion-textarea>
+    </ion-item>
+  </ion-list>
+   
+  <swiper-container>
+    <swiper-slide>
+      <ion-card color="primary">
+        <ion-card-header>
+          <ion-card-title>Primera App on Ionic</ion-card-title>
+          <ion-card-subtitle>Aqui los subtitles</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content> Aqui el contenido </ion-card-content>
+      </ion-card>
+    </swiper-slide>
+    <swiper-slide><ion-card color="secondary">
+      <ion-card-header>
+        <ion-card-title>Aqui va el titulo</ion-card-title>
+        <ion-card-subtitle>Sin subtitle</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content> lorep ipsm </ion-card-content>
+    </ion-card>
+  </swiper-slide>
+    <swiper-slide><ion-card color="yellow">
+      <ion-card-header>
+        <ion-card-title>Card Title</ion-card-title>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content> Card Content </ion-card-content>
+    </ion-card></swiper-slide>
+  </swiper-container>
+
 </ion-content>

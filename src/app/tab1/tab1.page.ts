@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, InfiniteScrollCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -11,6 +11,7 @@ export class Tab1Page implements OnInit {
   items: string[] = ["here the name0", "here the other name1", "here other other name2"];
   itemCopy: string[] = [...this.items];
   itemsAux : string[] = [];
+  lengthItems: number = 3;
   alertButtons = ['Agregar'];
   a= "";
   public alertInputs = [
@@ -105,12 +106,20 @@ export class Tab1Page implements OnInit {
             console.log(data.nombreObject);
             this.items.push(data.nombreObject);
             this.itemCopy = [...this.items];
+            this.lengthItems = this.lengthItems + 1;
           }
         }
       ]
     });
     (await alert).present();
   }
+
+  onIonInfinite(event: InfiniteScrollCustomEvent) {
+    setTimeout(() => {
+      event.target.complete();
+    }, 500);
+  }
+
 
   searchByName(){
     console.log("searching");
