@@ -25,3 +25,26 @@
 #container a {
   text-decoration: none;
 }
+
+ion-content.background {
+  background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Fionic%2F29&psig=AOvVaw33i4tlQFBpmAhux71niiOI&ust=1739290649613000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJDGxd7AuYsDFQAAAAAdAAAAABAE) 0 0/100% 100% no-repeat;
+}
+
+
+.custom-alert.alert-wrapper {
+  background: #000000;
+}
+
+ion-content {
+  --background: none;
+  background-image: url('https://burst.shopifycdn.com/photos/mountain-magic-hour.jpg?width=1000&format=pjpg&exif=0&iptc=0');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card-login {
+  --background: none;
+  background-color: rgba(255,255,255,0.5);
+}
+

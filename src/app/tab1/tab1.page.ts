@@ -11,7 +11,7 @@ export class Tab1Page implements OnInit {
   items: string[] = ["here the name0", "here the other name1", "here other other name2"];
   itemCopy: string[] = [...this.items];
   itemsAux : string[] = [];
-  lengthItems: number = 3;
+  itemsSize: number = 3;
   alertButtons = ['Agregar'];
   a= "";
   public alertInputs = [
@@ -100,13 +100,14 @@ export class Tab1Page implements OnInit {
       ],
       buttons: [
         {
-          text: 'ok',
+          text: 'agregar',
           role: 'submit',
           handler: data => {
             console.log(data.nombreObject);
             this.items.push(data.nombreObject);
             this.itemCopy = [...this.items];
-            this.lengthItems = this.lengthItems + 1;
+            console.log(this.itemsSize);
+            this.itemsSize = this.itemsSize + 1;
           }
         }
       ]

@@ -7,7 +7,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">tab3</ion-title>
+      <ion-title size="large">tab de foto</ion-title>
     </ion-toolbar>
   </ion-header>
    <div id="image">
@@ -17,26 +17,35 @@
 
     
    </div>
-   <ion-list [inset]="true">
-    <ion-item>
-      <ion-input label="First Name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input label="Last Name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-toggle>
-        <ion-label>Allow Notifications</ion-label>
-        <ion-note color="medium">Unsubscribe at any time</ion-note>
-      </ion-toggle>
-    </ion-item>
-  </ion-list>
+   <ion-card>
+    <ion-card-header>
+      
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item>
+          <ion-input label="Primer Nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Apellido"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-toggle>
+            <ion-label>Permitir notificacions</ion-label>
+            <ion-note color="medium"></ion-note>
+          </ion-toggle>
+        </ion-item>
+      </ion-list>
+      <ion-list [inset]="true">
+        <ion-item>
+          <ion-textarea label="Commentarios" labelPlacement="floating" rows="5"></ion-textarea>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+   </ion-card>
+   
 
-  <ion-list [inset]="true">
-    <ion-item>
-      <ion-textarea label="Comments" labelPlacement="floating" rows="5"></ion-textarea>
-    </ion-item>
-  </ion-list>
+
    
   <swiper-container>
     <swiper-slide>
