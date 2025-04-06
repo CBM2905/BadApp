@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { TabsPage } from '../tabs/tabs.page';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../service/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -12,24 +13,21 @@ export class HomePage {
 
   email: string = "";
   password: string = "";
-  validateData() {
-    if(this.email == "envrioment" && this.password=="1234"){
-      console.log("here");
+  async validateData() {
+    let a = await this.auth.Loggin(this.email, this.password);
+    console.log(a)
+    if(a == 1){
       this.homePageRedirection();
     }
-    else if(this.email=="" && this.password==""){
-      console.log("not here");
-      this.showAlert("Porfavor ingrese algun dato");
-    }
     else{
-      this.showAlert("datos invalidos");  
+      this.showAlert("Bad credentials");
     }
   }
 
   homePageRedirection(){
     this.navCtrl.navigateRoot('tabs');
   }
-  constructor(public navCtrl: NavController, public alrtCtrl: AlertController) {}
+  constructor(public navCtrl: NavController, public alrtCtrl: AlertController, private auth: AuthService) {}
   async showAlert(message: string){
     const alert = this.alrtCtrl.create({
       message: message,
