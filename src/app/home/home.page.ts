@@ -27,6 +27,9 @@ export class HomePage {
   homePageRedirection(){
     this.navCtrl.navigateRoot('tabs');
   }
+  registroPageRedirection(){
+    this.navCtrl.navigateRoot('registro');
+  }
   constructor(public navCtrl: NavController, public alrtCtrl: AlertController, private auth: AuthService) {}
   async showAlert(message: string){
     const alert = this.alrtCtrl.create({
