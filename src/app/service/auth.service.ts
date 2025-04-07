@@ -4,14 +4,19 @@ import { Auth,signInWithEmailAndPassword, createUserWithEmailAndPassword } from 
   providedIn: 'root'
 })
 export class AuthService {
-  private auth = inject(Auth);
+  public auth = inject(Auth);
   constructor() { }
 
   async Loggin(email: string, password: string){
     let dataReturn = 0;
     await signInWithEmailAndPassword(this.auth, email, password).then(
       (data) => {
-        dataReturn = 1;
+        if(data.user.email == "admin@gmail.com"){
+          dataReturn = 2
+        }
+        else{
+          dataReturn = 1
+        }
       }
     ).catch(
       (error) => dataReturn = 0    

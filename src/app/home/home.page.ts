@@ -19,6 +19,9 @@ export class HomePage {
     if(a == 1){
       this.homePageRedirection();
     }
+    else if(a == 2){
+      this.adminPageRedirect();
+    }
     else{
       this.showAlert("Bad credentials");
     }
@@ -29,6 +32,9 @@ export class HomePage {
   }
   registroPageRedirection(){
     this.navCtrl.navigateRoot('registro');
+  }
+  adminPageRedirect(){
+    this.navCtrl.navigateRoot('admin');
   }
   constructor(public navCtrl: NavController, public alrtCtrl: AlertController, private auth: AuthService) {}
   async showAlert(message: string){
