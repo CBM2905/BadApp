@@ -10,8 +10,13 @@
       <ion-title size="large">admin</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-input type="text">
-  </ion-input>
+  <ion-input type="text" fill="solid" label="Nombre del Quiz" labelPlacement="floating"
+    helperText="Ingrese el nombre del quiz" [(ngModel)]="name"></ion-input>
   <ion-input type="file" (change)="readExcel($event)">
   </ion-input>
+  <ul>
+    <li *ngFor="let quiz of this.firestore.quizList$| async">
+        Nombre Quiz:  {{quiz.Nombre}}
+    </li>
+</ul>
 </ion-content>

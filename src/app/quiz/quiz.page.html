@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>quiz</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">quiz</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card *ngIf="preguntaActual">
+    <ion-card-header>
+      <ion-card-title>{{ preguntaActual.Descripcion }}</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <p>Tiempo restante: <strong>{{ tiempoRestante }}</strong> segundos</p>
+
+      <ion-list>
+        <ion-item *ngFor="let respuesta of preguntaActual.preguntas" (click)="seleccionarRespuesta(respuesta)">
+          <ion-label>{{ respuesta }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

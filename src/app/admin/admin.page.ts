@@ -10,13 +10,18 @@ import { FirebaseService } from '../service/firebase.service';
   standalone: false
 })
 export class AdminPage implements OnInit {
-
-  constructor(private firestore: FirebaseService) { }
-
+  name: string = "";
+  constructor(public firestore: FirebaseService) { }
   ngOnInit() {
+    
   }
 
   async readExcel(e: any){
+    this.firestore.quizList$.forEach(
+      (data) => {
+        console.log(data);
+      }
+    )
     const reader = new FileReader();
     const file = e.target.files[0];
     let json = {};
@@ -42,7 +47,7 @@ export class AdminPage implements OnInit {
 
 
   convertToValidJson(json: any){
-    let jsonValid = {"Nombre" : "generico", "preguntas": {}};
+    let jsonValid = {"Nombre" : this.name, "preguntas": {}};
     let preguntasJson = [];
     for(let iter = 0; iter < json.Sheet1.length; iter = iter + 1){
       let array = {"Descripcion": json.Sheet1[iter].descripcion,"preguntas": [json.Sheet1[iter].opcionA, json.Sheet1[iter].OpcionB, json.Sheet1[iter].OpcionC, json.Sheet1[iter].OpcionD], "correcta": json.Sheet1[iter].Correcta}
