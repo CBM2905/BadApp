@@ -15,6 +15,13 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
   }
 
+  limpiarFormularioYVolver() {
+    this.email = "";
+    this.password = "";
+    this.homePageRedirect();
+  }
+
+
   async createUser(){
     let res = await this.auth.createUser(this.email, this.password);
     if(res == 1){

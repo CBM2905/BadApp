@@ -1,21 +1,25 @@
-
-
 <ion-content [fullscreen]="true" padding class="background">
-  <ion-header collapse="condense">
-    
-  </ion-header>
 
   <div id="container">
     <ion-text color="primary">
-      <h1>LogIn</h1>
+      <h1 class="login-title">Inicio de sesión</h1>
     </ion-text>
-    <ion-card class="card-login">
-      <ion-card-content>
-        <ion-input [(ngModel)]="email" label="Email" label-placement="floating" fill="outline" placeholder="Ingrese su email" type="email"></ion-input>
-        <ion-input [(ngModel)]="password" label="Password" label-placement="floating" fill="outline" placeholder="Ingrese su contraseñá" type="password"></ion-input>
-      </ion-card-content>
-      <ion-button (click)="validateData()">Acceder</ion-button>
-      <ion-button (click)="registroPageRedirection()">Registro</ion-button>
-    </ion-card>  
+
+    <div class="card-container">
+      <ion-card class="card-login"> <ion-card-content>
+          <ion-input [(ngModel)]="email" label="Email" label-placement="floating" fill="outline" placeholder="Ingrese su email" type="email"></ion-input>
+          <ion-input [(ngModel)]="password" label="Password" label-placement="floating" fill="outline" placeholder="Ingrese su contraseña" type="password"></ion-input>
+        </ion-card-content>
+        <ion-button class="botonacceso"  (click)="validateData()">Acceder</ion-button>
+        <ion-button class="botonregistro"  (click)="registroPageRedirection()">Registro</ion-button>
+      </ion-card>
+    </div>
+
+
+    
   </div>
+      
+
+
+  
 </ion-content>
