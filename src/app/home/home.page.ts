@@ -28,7 +28,7 @@ export class HomePage {
   }
 
   homePageRedirection(){
-    this.navCtrl.navigateRoot('tabs');
+    this.navCtrl.navigateRoot('tabs/tab1');
   }
   registroPageRedirection(){
     this.navCtrl.navigateRoot('registro');
