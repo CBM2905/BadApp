@@ -59,6 +59,6 @@ export class AdminPage implements OnInit {
   }
 
   addData(json: any){
-    this.firestore.newDoc(json);
+    this.firestore.newDoc(json, "Quiz");
   }
 }

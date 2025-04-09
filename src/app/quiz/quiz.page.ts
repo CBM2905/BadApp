@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController, AlertController, NavController} from '@ionic/angular';
+import { AuthService } from '../service/auth.service';
+import { FirebaseService } from '../service/firebase.service';
+import { increment } from '@angular/fire/firestore';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.page.html',
@@ -9,7 +12,7 @@ import { ToastController, AlertController, NavController} from '@ionic/angular';
 })
 export class QuizPage implements OnInit {
   list: any;
-  constructor(private router: Router, public toast: ToastController, private alrtController: AlertController, private navController: NavController) { 
+  constructor(private router: Router, public toast: ToastController, private alrtController: AlertController, private navController: NavController, private firestore: FirebaseService, private auth: AuthService) { 
     if(this.router.getCurrentNavigation()?.extras.state){
       const list = this.router.getCurrentNavigation()?.extras.state;
       this.list = list;
@@ -75,6 +78,7 @@ export class QuizPage implements OnInit {
   finalizarQuiz() {
     clearInterval(this.intervalo);
     this.alertShow("su puntaje fue " + this.puntajeTotal);
+    this.firestore.updatePuntuacion(this.auth.getCurrentUserId(), {puntuacion: increment(this.puntajeTotal)})
   }
 
   // Función para mezclar las respuestas aleatoriamente
@@ -109,7 +113,7 @@ export class QuizPage implements OnInit {
   }
 
   redirectToTab1(){
-    this.navController.navigateRoot('tab1')
+    this.navController.navigateRoot('tabs/tab1')
   }
 
 

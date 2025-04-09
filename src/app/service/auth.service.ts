@@ -1,18 +1,19 @@
 import { inject, Injectable } from '@angular/core';
 import { Auth,signInWithEmailAndPassword, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { FirebaseService } from './firebase.service'
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   public auth = inject(Auth);
-  constructor() { }
+  constructor(private firestore: FirebaseService) { }
 
   async Loggin(email: string, password: string){
     let dataReturn = 0;
     await signInWithEmailAndPassword(this.auth, email, password).then(
       (data) => {
         if(data.user.email == "admin@gmail.com"){
-          dataReturn = 2
+          dataReturn = 2;
         }
         else{
           dataReturn = 1
@@ -29,6 +30,7 @@ export class AuthService {
     await createUserWithEmailAndPassword(this.auth, email, password).then(
       (data) => {
         dataReturn = 1;
+        this.firestore.newDocSetId({"email": data.user.email, "puntuacion": 0}, "Users", data.user.uid);
       }
     ).catch(
       (error) => {
@@ -36,6 +38,10 @@ export class AuthService {
       }
     )
     return dataReturn;
+  }
+
+  getCurrentUserId(){
+    return this.auth.currentUser?.uid;
   }
 }
 
