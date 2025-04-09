@@ -33,6 +33,7 @@ export class QuizPage implements OnInit {
   cargarPregunta() {
     if (this.indicePregunta < this.list.length) {
       this.preguntaActual = this.list[this.indicePregunta];
+      this.shuffleArray(this.preguntaActual.preguntas);
       this.tiempoRestante = 30;
       this.iniciarTemporizador();
     } else {
