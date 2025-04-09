@@ -1,19 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>admin</ion-title>
+<ion-header [translucent]="true" padding class="background">
+  <ion-toolbar padding class="background">
+    <ion-title class="title">Administrador</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
+<ion-content [fullscreen]="true" padding class="background">
+  <ion-header collapse="condense" padding class="background">
+    <ion-toolbar padding class="background">
       <ion-title size="large">admin</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-input type="text" fill="solid" label="Nombre del Quiz" labelPlacement="floating"
-    helperText="Ingrese el nombre del quiz" [(ngModel)]="name"></ion-input>
-  <ion-input type="file" (change)="readExcel($event)">
-  </ion-input>
+
+<div>
+  <ion-title class="subtitle">Nombre del Quiz</ion-title>
+</div>
+  
+<div class="margendiv">
+  <ion-input type="text" fill="white"  labelPlacement="floating"
+  helperText="Ingrese el nombre del quiz" [(ngModel)]="name"></ion-input>
+
+
+  <ion-input type="file" (change)="readExcel($event)"></ion-input>
+</div>
+  
   
      
       <ion-list [inset]="true" *ngFor="let quiz of this.firestore.quizList$| async">
