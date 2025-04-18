@@ -29,13 +29,13 @@ export class HomePage {
   }
 
   homePageRedirection(){
-    this.navCtrl.navigateRoot('tabs/tab1');
+    this.navCtrl.navigateForward('tabs/tab1');
   }
   registroPageRedirection(){
-    this.navCtrl.navigateRoot('registro');
+    this.navCtrl.navigateForward('registro');
   }
   adminPageRedirect(){
-    this.navCtrl.navigateRoot('admin');
+    this.navCtrl.navigateForward('admin');
   }
   constructor(public navCtrl: NavController, public alrtCtrl: AlertController, private auth: AuthService, private firestore: FirebaseService) {}
   async showAlert(message: string){
