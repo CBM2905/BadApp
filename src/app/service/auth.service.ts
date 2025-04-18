@@ -6,6 +6,7 @@ import { FirebaseService } from './firebase.service'
 })
 export class AuthService {
   public auth = inject(Auth);
+  public a = this.getCurrentUserId();
   constructor(private firestore: FirebaseService) { }
 
   async Loggin(email: string, password: string){

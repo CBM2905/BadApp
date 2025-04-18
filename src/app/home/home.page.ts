@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { TabsPage } from '../tabs/tabs.page';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from '../service/auth.service';
+import { FirebaseService } from '../service/firebase.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -36,7 +37,7 @@ export class HomePage {
   adminPageRedirect(){
     this.navCtrl.navigateRoot('admin');
   }
-  constructor(public navCtrl: NavController, public alrtCtrl: AlertController, private auth: AuthService) {}
+  constructor(public navCtrl: NavController, public alrtCtrl: AlertController, private auth: AuthService, private firestore: FirebaseService) {}
   async showAlert(message: string){
     const alert = this.alrtCtrl.create({
       message: message,

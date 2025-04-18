@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import * as excel from 'xlsx';
 import { FirebaseService } from '../service/firebase.service';
-
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.page.html',
@@ -11,9 +11,21 @@ import { FirebaseService } from '../service/firebase.service';
 })
 export class AdminPage implements OnInit {
   name: string = "";
-  constructor(public firestore: FirebaseService) { }
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+  constructor(public firestore: FirebaseService, private alertController: AlertController) { }
   ngOnInit() {
     
+  }
+
+
+  async aux(e: any){
+    await this.showInputNameAlert(e);
+    console.log("here");
+
   }
 
   async readExcel(e: any){
@@ -25,6 +37,7 @@ export class AdminPage implements OnInit {
     const reader = new FileReader();
     const file = e.target.files[0];
     let json = {};
+    
     reader.onload = (event) => {
       console.log("hello");
       const data = reader.result;
@@ -42,9 +55,32 @@ export class AdminPage implements OnInit {
     }
     reader.readAsBinaryString(file);
     console.log(json);
-
+    let inputData = document.getElementById("input") as HTMLInputElement;
+    inputData.value = "";
   }
 
+  async showInputNameAlert(e: any){
+    const alert = await this.alertController.create({
+      message: "Ingrese el nombre del archivo",
+      inputs: [{
+        name: "Nombre",
+        placeholder: "Nombre",
+        id: "Nombre",
+        type: "text",
+        label: "Nombre"
+      }],
+      buttons: [
+        {
+          text: "ok",
+          handler: async (data) => {
+            this.name = await data.Nombre;
+            this.readExcel(e);
+          }
+        }
+      ]
+    })
+    await alert.present();
+  }
 
   convertToValidJson(json: any){
     let jsonValid = {"Nombre" : this.name, "preguntas": {}};
